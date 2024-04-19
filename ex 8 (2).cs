@@ -41,6 +41,10 @@ short InputFraction(string s)
         {
             throw new OverflowException();
         }
+        if (n < 0)
+        {
+            throw new FormatException();
+        }
     }
     catch (FormatException)
     {
