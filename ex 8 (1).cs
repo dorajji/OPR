@@ -21,16 +21,20 @@ uint GoodInput(string s)
     }
     return n;
 }
-double GoodInputk(string s)
+float GoodInputk(string s)
 {
-    double k;
+    float k;
     try
     {
-        k = Convert.ToDouble(s);
+        k = Convert.ToSingle(s);
+        if (k < 0)
+        {
+            throw new FormatException();
+        }
     }
     catch (FormatException)
     {
-        Console.WriteLine("Введенная строка должна являться числом");
+        Console.WriteLine("Введенная строка должна являться положительным числом");
         return GoodInput(Console.ReadLine());
     }
     catch (OverflowException)
@@ -68,7 +72,7 @@ else
 Console.WriteLine("Сумма: ");
 Console.WriteLine(money1 + money2);
 Console.Write("Введите число: ");
-double k = GoodInputk(Console.ReadLine());
+float k = GoodInputk(Console.ReadLine());
 Console.WriteLine("Произведение: ");
 Console.WriteLine(money1.Mult(k));
 Console.WriteLine(money2.Mult(k));
@@ -78,9 +82,9 @@ Console.WriteLine(money2.Div(k));
 
 class EngMoney
 {
-    internal uint pound;
-    internal uint shilling;
-    internal uint pence;
+    internal ulong pound;
+    internal ulong shilling;
+    internal ulong pence;
     internal EngMoney(uint pound, uint shilling, uint pence)
     {
         this.pound = pound;
@@ -94,7 +98,7 @@ class EngMoney
         this.shilling = 0;
         this.pence = 0;
     }
-    internal uint AsPence
+    internal ulong AsPence
     {
         get { return ((this.pound * 20) + this.shilling) * 12 + this.pence; }
     }
@@ -144,7 +148,7 @@ class EngMoney
         money.GoodLooking();
         return money;
     }
-    internal EngMoney Mult(double k)
+    internal EngMoney Mult(float k)
     {
         EngMoney money = new EngMoney();
         double pen = this.AsPence;
