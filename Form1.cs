@@ -21,36 +21,40 @@ namespace ex_10_1
             }
             catch (FormatException)
             {
-                result.Text = "Íåâåðíûé ôîðìàò ââîäà ðàäèóñà R";
+                result.Text = "Неверный формат ввода радиуса R";
                 return;
             }
             catch (StackOverflowException)
             {
-                result.Text = "Ñëèøêîì áîëüøîå ââåäåííîå çíà÷åíèå ðàäèóñà R";
+                result.Text = "Слишком большое введенное значение радиуса R";
                 return;
             }
             catch
             {
-                result.Text = "Îøèáêà!";
+                result.Text = "Ошибка!";
                 return;
             }
             try
             {
                 h = Convert.ToDouble(textBox2.Text);
+                if (h < 0)
+                {
+                    throw new FormatException();
+                }
             }
             catch (FormatException)
             {
-                result.Text = "Íåâåðíûé ôîðìàò ââîäà âûñîòû h";
+                result.Text = "Неверный формат ввода высоты h";
                 return;
             }
             catch (StackOverflowException)
             {
-                result.Text = "Ñëèøêîì áîëüøîå ââåäåííîå çíà÷åíèå âûñîòû h";
+                result.Text = "Слишком большое введенное значение высоты h";
                 return;
             }
             catch
             {
-                result.Text = "Îøèáêà!";
+                result.Text = "Ошибка!";
                 return;
             }
             result.Text = Convert.ToString(Math.Round(Math.PI * Math.Pow(R, 2) * h, 2));
