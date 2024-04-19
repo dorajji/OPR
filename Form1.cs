@@ -14,20 +14,24 @@ namespace ex_10_1
             try
             {
                 R = Convert.ToDouble(textBox1.Text);
+                if (R < 0)
+                {
+                    throw new FormatException();
+                }
             }
             catch (FormatException)
             {
-                result.Text = "Íåâåðíûé ôîðìàò ââîäà ðàäèóñà R";
+                result.Text = "ÃÃ¥Ã¢Ã¥Ã°Ã­Ã»Ã© Ã´Ã®Ã°Ã¬Ã Ã² Ã¢Ã¢Ã®Ã¤Ã  Ã°Ã Ã¤Ã¨Ã³Ã±Ã  R";
                 return;
             }
             catch (StackOverflowException)
             {
-                result.Text = "Ñëèøêîì áîëüøîå ââåäåííîå çíà÷åíèå ðàäèóñà R";
+                result.Text = "Ã‘Ã«Ã¨Ã¸ÃªÃ®Ã¬ Ã¡Ã®Ã«Ã¼Ã¸Ã®Ã¥ Ã¢Ã¢Ã¥Ã¤Ã¥Ã­Ã­Ã®Ã¥ Ã§Ã­Ã Ã·Ã¥Ã­Ã¨Ã¥ Ã°Ã Ã¤Ã¨Ã³Ã±Ã  R";
                 return;
             }
             catch
             {
-                result.Text = "Îøèáêà!";
+                result.Text = "ÃŽÃ¸Ã¨Ã¡ÃªÃ !";
                 return;
             }
             try
@@ -36,17 +40,17 @@ namespace ex_10_1
             }
             catch (FormatException)
             {
-                result.Text = "Íåâåðíûé ôîðìàò ââîäà âûñîòû h";
+                result.Text = "ÃÃ¥Ã¢Ã¥Ã°Ã­Ã»Ã© Ã´Ã®Ã°Ã¬Ã Ã² Ã¢Ã¢Ã®Ã¤Ã  Ã¢Ã»Ã±Ã®Ã²Ã» h";
                 return;
             }
             catch (StackOverflowException)
             {
-                result.Text = "Ñëèøêîì áîëüøîå ââåäåííîå çíà÷åíèå âûñîòû h";
+                result.Text = "Ã‘Ã«Ã¨Ã¸ÃªÃ®Ã¬ Ã¡Ã®Ã«Ã¼Ã¸Ã®Ã¥ Ã¢Ã¢Ã¥Ã¤Ã¥Ã­Ã­Ã®Ã¥ Ã§Ã­Ã Ã·Ã¥Ã­Ã¨Ã¥ Ã¢Ã»Ã±Ã®Ã²Ã» h";
                 return;
             }
             catch
             {
-                result.Text = "Îøèáêà!";
+                result.Text = "ÃŽÃ¸Ã¨Ã¡ÃªÃ !";
                 return;
             }
             result.Text = Convert.ToString(Math.Round(Math.PI * Math.Pow(R, 2) * h, 2));
