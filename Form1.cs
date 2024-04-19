@@ -14,6 +14,10 @@ namespace ex_10__2_
             try
             {
                 n = Convert.ToInt32(number.Text);
+                if (n < 1)
+                {
+                    throw new FormatException();
+                }
             }
             catch (FormatException)
             {
